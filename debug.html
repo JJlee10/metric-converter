@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Dashboard</title>
+
+```
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .col {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    #weekly-tasks {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    input {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    #goal-btn {
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #goal-message {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<h1>Dashboard Status</h1>
+
+<div class="row">
+
+    <div class="col" id="weekly-tasks">
+
+        <h2>Weekly Task Goals</h2>
+
+        <form id="goal-form">
+
+            <label for="user-name">Name:</label>
+            <input type="text" id="user-name" required>
+
+            <label for="daily-goal">Daily Task Goal:</label>
+            <input type="number" id="daily-goal" required>
+
+            <label for="bonus-tasks">Weekly Bonus Tasks:</label>
+            <input type="number" id="bonus-tasks" required>
+
+            <button type="submit" id="goal-btn">Calculate Weekly Goal</button>
+
+        </form>
+
+        <p id="goal-message"></p>
+
+        <script src="js/task-manager.js"></script>
+
+    </div>
+
+</div>
+```
+
+</body>
+
+</html>
