@@ -1,0 +1,41 @@
+/* Imperial/Metric Converter */
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Dashboard</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+#metric-converter {
+margin-top: 20px;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+#metric-converter h2 {
+margin-bottom: 20px;
+}
+
+#converter-form {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+#converter-form input,
+#converter-form select {
+padding: 8px;
+font-size: 16px;
+}
+
+#convert-button {
+padding: 10px;
+font-size: 16px;
+cursor: pointer;
+}
+
+#conversion-result {
+margin-top: 20px;
+padding: 10px;
+font-weight: bold;
+}
