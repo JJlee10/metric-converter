@@ -1,180 +1,273 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Dashboard</title>
 
-```
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
+    <!-- Magic Eight Ball CSS -->
+    <link rel="stylesheet" href="css/magic-eight-ball.css">
 
-    .row {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
-    .col {
-        width: 100%;
-        max-width: 500px;
-    }
+        .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-    #weekly-tasks {
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-    }
+        .col {
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
 
-    #metric-converter {
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-    }
+        #weekly-tasks {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
 
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+        #metric-converter {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
 
-    input,
-    select {
-        padding: 8px;
-        font-size: 16px;
-    }
+        #magic-eight-ball {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+        }
 
-    #goal-btn,
-    #convert-button {
-        padding: 10px;
-        font-size: 16px;
-        cursor: pointer;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-    #goal-message,
-    #conversion-result {
-        margin-top: 20px;
-        font-weight: bold;
-    }
-</style>
-```
+        input,
+        select {
+            padding: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
 
+        #goal-btn,
+        #convert-button,
+        #reset,
+        #addResponse {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #goal-message,
+        #conversion-result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #magic-eight-ball input {
+            width: 100%;
+        }
+
+        #magicEightBall {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        #ball {
+            width: 220px;
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        #circle {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+            }
+
+            .col {
+                max-width: 100%;
+            }
+
+            #ball {
+                width: 180px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-```
-<h1>Dashboard Status</h1>
+    <h1>Dashboard Status</h1>
 
-<div class="row">
+    <div class="row">
 
-    <!-- Weekly Task Goals -->
-    <div class="col" id="weekly-tasks">
+        <!-- Weekly Task Goals -->
+        <div class="col" id="weekly-tasks">
 
-        <h2>Weekly Task Goals</h2>
+            <h2>Weekly Task Goals</h2>
 
-        <form id="goal-form">
+            <form id="goal-form">
 
-            <label for="user-name">Name:</label>
-            <input type="text" id="user-name" required>
+                <label for="user-name">Name:</label>
+                <input type="text" id="user-name" required>
 
-            <label for="daily-goal">Daily Task Goal:</label>
-            <input type="number" id="daily-goal" required>
+                <label for="daily-goal">Daily Task Goal:</label>
+                <input type="number" id="daily-goal" required>
 
-            <label for="bonus-tasks">Weekly Bonus Tasks:</label>
-            <input type="number" id="bonus-tasks" required>
+                <label for="bonus-tasks">Weekly Bonus Tasks:</label>
+                <input type="number" id="bonus-tasks" required>
 
-            <button type="submit" id="goal-btn">
-                Calculate Weekly Goal
-            </button>
+                <button type="submit" id="goal-btn">
+                    Calculate Weekly Goal
+                </button>
 
-        </form>
+            </form>
 
-        <p id="goal-message"></p>
+            <p id="goal-message"></p>
 
-        <script src="js/task-manager.js"></script>
-
-    </div>
-
-
-    <!-- Imperial/Metric Converter -->
-    <div class="col" id="metric-converter">
-
-        <h2>Imperial/Metric Converter</h2>
-
-        <form id="converter-form">
-
-            <label for="input-value">Enter a value:</label>
-
-            <input
-                type="number"
-                id="input-value"
-                step="any"
-                required
-            >
-
-            <label for="conversion-type">
-                Choose a conversion:
-            </label>
-
-            <select id="conversion-type">
-
-                <option value="inch-to-centimeter">
-                    Inch to Centimeter
-                </option>
-
-                <option value="foot-to-centimeter">
-                    Foot to Centimeter
-                </option>
-
-                <option value="yard-to-meter">
-                    Yard to Meter
-                </option>
-
-                <option value="mile-to-kilometer">
-                    Mile to Kilometer
-                </option>
-
-                <option value="centimeter-to-inch">
-                    Centimeter to Inch
-                </option>
-
-                <option value="centimeter-to-foot">
-                    Centimeter to Foot
-                </option>
-
-                <option value="meter-to-yard">
-                    Meter to Yard
-                </option>
-
-                <option value="kilometer-to-mile">
-                    Kilometer to Mile
-                </option>
-
-            </select>
-
-            <button type="submit" id="convert-button">
-                Convert
-            </button>
-
-        </form>
-
-        <div id="conversion-result">
-            Your conversion result will appear here.
         </div>
 
-        <script src="metric-converter.js" defer></script>
+        <!-- Imperial/Metric Converter -->
+        <div class="col" id="metric-converter">
+
+            <h2>Imperial/Metric Converter</h2>
+
+            <form id="converter-form">
+
+                <label for="input-value">Enter a value:</label>
+
+                <input
+                    type="number"
+                    id="input-value"
+                    step="any"
+                    required
+                >
+
+                <label for="conversion-type">
+                    Choose a conversion:
+                </label>
+
+                <select id="conversion-type">
+
+                    <option value="inch-to-centimeter">
+                        Inch to Centimeter
+                    </option>
+
+                    <option value="foot-to-centimeter">
+                        Foot to Centimeter
+                    </option>
+
+                    <option value="yard-to-meter">
+                        Yard to Meter
+                    </option>
+
+                    <option value="mile-to-kilometer">
+                        Mile to Kilometer
+                    </option>
+
+                    <option value="centimeter-to-inch">
+                        Centimeter to Inch
+                    </option>
+
+                    <option value="centimeter-to-foot">
+                        Centimeter to Foot
+                    </option>
+
+                    <option value="meter-to-yard">
+                        Meter to Yard
+                    </option>
+
+                    <option value="kilometer-to-mile">
+                        Kilometer to Mile
+                    </option>
+
+                </select>
+
+                <button type="submit" id="convert-button">
+                    Convert
+                </button>
+
+            </form>
+
+            <div id="conversion-result">
+                Your conversion result will appear here.
+            </div>
+
+        </div>
+
+        <!-- Magic Eight Ball -->
+        <div class="col" id="magic-eight-ball">
+
+            <h2 class="heading">Magic Eight Ball</h2>
+
+            <form id="eightBallForm">
+
+                <p>
+                    Type a yes/no question below, then click
+                    on the Eight Ball to get your answer!
+                </p>
+
+                <label for="question">Your question:</label>
+
+                <input
+                    id="question"
+                    name="question"
+                    type="text"
+                    placeholder="Will I have a good day?"
+                >
+
+                <div id="magicEightBall">
+
+                    <div id="circle"></div>
+
+                    <img
+                        id="ball"
+                        src="img/magic-eight-ball.png"
+                        alt="Magic Eight Ball"
+                    >
+
+                </div>
+
+                <button id="reset" name="reset" type="reset">
+                    Ask another question
+                </button>
+
+                <button id="addResponse" type="button">
+                    Add a new response
+                </button>
+
+            </form>
+
+        </div>
 
     </div>
 
-</div>
-```
+    <!-- Existing Dashboard JavaScript -->
+    <script src="js/task-manager.js" defer></script>
+    <script src="metric-converter.js" defer></script>
+
+    <!-- Magic Eight Ball JavaScript -->
+    <script src="js/magic-eight-ball.js" defer></script>
 
 </body>
-
 </html>
