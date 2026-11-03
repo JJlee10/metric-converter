@@ -1,12 +1,18 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Interactive Dashboard</title>
 
+    <!-- Existing CSS -->
     <link rel="stylesheet" href="css/magic-eight-ball.css">
+
+    <!-- New Digital Clock CSS -->
+    <link rel="stylesheet" href="css/digital-clock.css">
 
     <style>
         * {
@@ -117,6 +123,7 @@
             display: none;
         }
 
+        /* Responsive Design */
         @media (max-width: 600px) {
             body {
                 margin: 10px;
@@ -131,12 +138,32 @@
             }
         }
     </style>
+
+    <!-- JavaScript Files -->
+    <script src="js/task-manager.js" defer></script>
+    <script src="metric-converter.js" defer></script>
+    <script src="js/magic-eight-ball.js" defer></script>
+    <script src="js/digital-clock.js" defer></script>
+
 </head>
 
 <body>
+
     <h1>Dashboard Status</h1>
 
     <main class="row">
+
+        <!-- DIGITAL CLOCK AND DATE -->
+        <section class="col" id="digital-clock">
+
+            <h3>Current Time &amp; Date</h3>
+
+            <p id="clock-face">Loading time...</p>
+
+            <p id="calendar-date">Loading date...</p>
+
+        </section>
+
 
         <!-- WEEKLY TASK GOALS AND M7 TASK MANAGER -->
         <section class="col" id="weekly-tasks">
@@ -144,23 +171,36 @@
             <h2>Weekly Task Goals</h2>
 
             <form id="goal-form">
+
                 <label for="user-name">Name:</label>
                 <input type="text" id="user-name" required>
 
                 <label for="daily-goal">Daily Task Goal:</label>
-                <input type="number" id="daily-goal"
-                       min="0" step="1" required>
+                <input
+                    type="number"
+                    id="daily-goal"
+                    min="0"
+                    step="1"
+                    required
+                >
 
                 <label for="bonus-tasks">Weekly Bonus Tasks:</label>
-                <input type="number" id="bonus-tasks"
-                       min="0" step="1" required>
+                <input
+                    type="number"
+                    id="bonus-tasks"
+                    min="0"
+                    step="1"
+                    required
+                >
 
                 <button type="submit" id="goal-btn">
                     Calculate Weekly Goal
                 </button>
+
             </form>
 
             <p id="goal-message" aria-live="polite"></p>
+
 
             <!-- M7 REQUIRED TASK MANAGER INTERFACE -->
             <div id="task-list">
@@ -170,6 +210,7 @@
                 <p>Enter a task below to manage your goals.</p>
 
                 <form id="task-form">
+
                     <label for="task-name">Enter task:</label>
 
                     <input
@@ -181,12 +222,15 @@
                     <button type="submit" id="add-task">
                         Add Task
                     </button>
+
                 </form>
 
-                <!-- JavaScript creates the UL here. -->
+                <!-- JavaScript creates the task list here. -->
 
             </div>
+
         </section>
+
 
         <!-- IMPERIAL / METRIC CONVERTER -->
         <section class="col" id="metric-converter">
@@ -209,6 +253,7 @@
                 </label>
 
                 <select id="conversion-type">
+
                     <option value="inch-to-centimeter">
                         Inch to Centimeter
                     </option>
@@ -240,17 +285,21 @@
                     <option value="kilometer-to-mile">
                         Kilometer to Mile
                     </option>
+
                 </select>
 
                 <button type="submit" id="convert-button">
                     Convert
                 </button>
+
             </form>
 
             <div id="conversion-result" aria-live="polite">
                 Your conversion result will appear here.
             </div>
+
         </section>
+
 
         <!-- MAGIC EIGHT BALL -->
         <section class="col" id="magic-eight-ball">
@@ -274,6 +323,7 @@
                 >
 
                 <div id="magicEightBall">
+
                     <div id="circle"></div>
 
                     <img
@@ -281,6 +331,7 @@
                         src="img/magic-eight-ball.png"
                         alt="Magic Eight Ball"
                     >
+
                 </div>
 
                 <button id="reset" name="reset" type="reset">
@@ -292,14 +343,12 @@
                 </button>
 
             </form>
+
         </section>
 
     </main>
 
-    <!-- Load each JavaScript file only once. -->
-    <script src="js/task-manager.js" defer></script>
-    <script src="metric-converter.js" defer></script>
-    <script src="js/magic-eight-ball.js" defer></script>
-
 </body>
+
 </html>
+```

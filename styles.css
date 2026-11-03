@@ -39,3 +39,38 @@ margin-top: 20px;
 padding: 10px;
 font-weight: bold;
 }
+
+/* Digital Clock Component */
+
+#digital-clock {
+    background-color: #1e293b;
+    color: white;
+    padding: 25px;
+    margin: 20px auto;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Clock Heading */
+#digital-clock h3 {
+    color: #38bdf8;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Time Display */
+#clock-face {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 15px 0;
+    color: #ffffff;
+}
+
+/* Date Display */
+#calendar-date {
+    font-size: 18px;
+    color: #cbd5e1;
+}
