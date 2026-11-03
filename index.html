@@ -8,10 +8,8 @@
 
     <title>Interactive Dashboard</title>
 
-    <!-- Existing CSS -->
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/magic-eight-ball.css">
-
-    <!-- New Digital Clock CSS -->
     <link rel="stylesheet" href="css/digital-clock.css">
 
     <style>
@@ -74,7 +72,30 @@
             overflow-wrap: anywhere;
         }
 
-        /* M7 Task Manager */
+        /* DIGITAL CLOCK */
+        #digital-clock {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+        }
+
+        #digital-clock h3 {
+            color: #38bdf8;
+        }
+
+        #clock-face {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 15px 0;
+        }
+
+        #calendar-date {
+            font-size: 18px;
+            color: #cbd5e1;
+        }
+
+        /* M7 TASK MANAGER */
         #task-list {
             margin-top: 25px;
             padding-top: 15px;
@@ -99,7 +120,7 @@
             padding: 5px 8px;
         }
 
-        /* Magic Eight Ball */
+        /* MAGIC EIGHT BALL */
         #magic-eight-ball {
             text-align: center;
         }
@@ -123,7 +144,7 @@
             display: none;
         }
 
-        /* Responsive Design */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 600px) {
             body {
                 margin: 10px;
@@ -135,6 +156,10 @@
 
             #ball {
                 width: 180px;
+            }
+
+            #clock-face {
+                font-size: 28px;
             }
         }
     </style>
@@ -164,8 +189,7 @@
 
         </section>
 
-
-        <!-- WEEKLY TASK GOALS AND M7 TASK MANAGER -->
+        <!-- WEEKLY TASK GOALS AND TASK MANAGER -->
         <section class="col" id="weekly-tasks">
 
             <h2>Weekly Task Goals</h2>
@@ -201,8 +225,7 @@
 
             <p id="goal-message" aria-live="polite"></p>
 
-
-            <!-- M7 REQUIRED TASK MANAGER INTERFACE -->
+            <!-- TASK MANAGER -->
             <div id="task-list">
 
                 <h3>Weekly Task List</h3>
@@ -230,7 +253,6 @@
             </div>
 
         </section>
-
 
         <!-- IMPERIAL / METRIC CONVERTER -->
         <section class="col" id="metric-converter">
@@ -299,7 +321,6 @@
             </div>
 
         </section>
-
 
         <!-- MAGIC EIGHT BALL -->
         <section class="col" id="magic-eight-ball">
